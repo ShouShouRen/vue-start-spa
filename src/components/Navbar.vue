@@ -5,9 +5,11 @@
             <a href="#" class="navbar-brand">My Vue</a>
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item" v-for="(page, index) in pages" :key="index">
-                    <a :href="page.link.url" :class="{ active: activePage == index }" class="nav-link"
-                        :title="`This link gose to the ${page.link.text} page`" @click.prevent="navLinkClick(index)">{{
-                            page.link.text }}</a>
+                    <navbar-link :page="page" :isActive="activePage === index">
+                        <a class="nav-link" :class="{ active: activePage == index }" aria-current="page" :href="page.link.url"
+                            :title="`This link goes to the ${page.link.text} page`" @click.preve="navLinkClick(index)">
+                            {{ page.link.text }}</a>
+                    </navbar-link>
                 </li>
             </ul>
             <form class="d-flex">
